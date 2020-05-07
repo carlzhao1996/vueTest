@@ -6,7 +6,7 @@
           <h3>4 BOX LEVEL ASSEMBLY OR DISASSEMBLY POTENTIAL RISK</h3>
         </el-col>
         <el-col :span="8" class="subTotal">
-          <h3>SUB TOTAL= {{40}}</h3>
+          <h3>SUB TOTAL= {{subTotal}}</h3>
         </el-col>
       </el-row>
     </div>
@@ -31,7 +31,7 @@
               <p>{{item.calOneText}}</p>
               <el-input-number
                 size="small"
-                @change="calculateData"
+                @change="calculate"
                 v-model="$data[item.x1]"
                 :min="0"
               ></el-input-number>
@@ -42,7 +42,7 @@
               <p>{{item.calTwoText}}</p>
               <el-input-number
                 size="small"
-                @change="calculateData"
+                @change="calculate"
                 v-model="$data[item.x2]"
                 :min="0"
               ></el-input-number>
@@ -53,7 +53,7 @@
               <p>{{item.calThreeText}}</p>
               <el-input-number
                 size="small"
-                @change="calculateData"
+                @change="calculate"
                 v-model="$data[item.x3]"
                 :min="0"
               ></el-input-number>
@@ -86,7 +86,7 @@
           <td>
             <el-input-number
               size="small"
-              @change="calculateData"
+              @change="calculate"
               v-model="$data[item.model]"
               :min="0"
             ></el-input-number>
@@ -119,7 +119,7 @@
               <p>{{item.calOneText}}</p>
               <el-input-number
                 size="small"
-                @change="calculateData"
+                @change="calculate"
                 v-model="$data[item.calOne]"
                 :min="0"
               ></el-input-number>
@@ -130,7 +130,7 @@
               <p>{{item.calTwoText}}</p>
               <el-input-number
                 size="small"
-                @change="calculateData"
+                @change="calculate"
                 v-model="$data[item.calTwo]"
                 :min="0"
               ></el-input-number>
@@ -141,7 +141,7 @@
               <p>{{item.calThreeText}}</p>
               <el-input-number
                 size="small"
-                @change="calculateData"
+                @change="calculate"
                 v-model="$data[item.calThree]"
                 :min="0"
               ></el-input-number>
@@ -150,13 +150,29 @@
         </el-row>
       </div>
     </div>
+    <div style="padding-top:30px;">
+      <span>SUB TOTAL: {{total}}</span>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+  methods:{
+    calculate(){
+      this.checksfourPointone = this.condition411*1+this.condition412*2+this.condition413*3;
+      this.checksfourPointtwo = this.condition421*1+this.condition422*2+this.condition423*3;
+      this.checksfourPointthree = this.condition431*1+this.condition432*2+this.condition433*3;
+      this.checksfourPointfour = this.condition441*1+this.condition442*2+this.condition443*3;
+      this.checksfourPointfive = this.condition451*1+this.condition452*2+this.condition453*3;
+      this.checksfourPointsix = this.condition461*1+this.condition462*2+this.condition463*3;
+    }
+  },
   data() {
     return {
+      total:0,
+      subtotal:25,
+
       checksfourPointone:0,
       condition411:0,
       condition412:0,
