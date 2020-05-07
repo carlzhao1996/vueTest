@@ -37,7 +37,7 @@
     </div>
     <div class="Remark">
         <el-col :span="20">
-            <el-input type="textarea" autosize placeholder="Remark" v-model="remark3"></el-input>
+            <el-input type="textarea" autosize placeholder="Remark" v-model="remark3" @input="calculate"></el-input>
         </el-col>
     </div>
   </div>
@@ -52,7 +52,7 @@ export default {
       condition33: 0,
       condition34: 0,
       condition35: 0,
-      remark:3,
+      remark3:"",
       tableData: [
         {
           text:
@@ -91,8 +91,15 @@ export default {
   methods:{
     calculate(){
       this.total=this.condition31+this.condition32
-      +Number(this.condition33*0.1)+Number(this.condition34*0.3)+this.condition35;
+      +this.condition33*0.1+this.condition34*0.3+this.condition35;
       //TODO: subtotal
+      this.subTotal = 10-this.total;
+      let obj = {
+        total:this.total,
+        subTotal:this.subTotal,
+        remark3:this.remark3
+      }
+      this.$emit('sectionThreeValue',obj);
     }
   }
 

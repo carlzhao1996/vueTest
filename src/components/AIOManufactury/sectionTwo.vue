@@ -93,6 +93,24 @@ export default {
     calculate(){
       this.total = this.condition21+this.condition22;
       //TODO: SUB TOTAL
+      let data;
+      if((5-this.condition22)<0){
+        data=0;
+      }else{
+        data = 5-this.condition22;
+      }
+      console.log(data);
+      if((5-(this.condition21/5))<0){
+        this.subTotal = 0;
+      }else{
+        this.subTotal = (5-(this.condition21/5))+data
+      }
+      let obj = {
+        total:this.total,
+        subTotal:this.subTotal,
+        remark2:this.remark2
+      }
+      this.$emit('sectionTwoValue',obj);
     }
   },
 };

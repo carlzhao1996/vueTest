@@ -62,7 +62,7 @@
         </el-row>
         <el-row>
           <el-col :span="20" style="padding-top:20px;">
-            <el-input type="textarea" autosize placeholder="Remark" v-model="$data[item.comment]"></el-input>
+            <el-input type="textarea" autosize placeholder="Remark" v-model="$data[item.comment]" @input="calculate"></el-input>
           </el-col>
         </el-row>
       </div>
@@ -166,12 +166,46 @@ export default {
       this.checksfourPointfour = this.condition441*1+this.condition442*2+this.condition443*3;
       this.checksfourPointfive = this.condition451*1+this.condition452*2+this.condition453*3;
       this.checksfourPointsix = this.condition461*1+this.condition462*2+this.condition463*3;
+      this.checksfourPointseven = this.condition47A+this.condition47B+this.condition47C+this.condition47D
+      +this.condition47E+this.condition47F+this.condition47G+this.condition47I+this.condition47j+this.condition47k+
+      this.condition47l+this.condition47j2+this.condition47k2+this.condition47l2+this.condition47m+
+      this.condition47n+this.condition47o+this.condition47p+this.condition47p+this.condition47q+this.condition47r
+      +this.condition47s+this.condition47u+this.condition47v;
+      this.checksfourPointeight = this.condition8a1*2*this.condition8a2+3*this.condition8a3+this.condition8b1
+      +2*this.condition8b2+3*this.condition8b3+this.condition8B1+2*this.condition8B2+3*this.condition8B3;
+      this.total = this.checksfourPointone+this.checksfourPointtwo+this.checksfourPointthree
+      +this.checksfourPointfour+this.checksfourPointfive+this.checksfourPointsix+this.checksfourPointseven
+      +this.checksfourPointeight;
+      if((25-this.total)<0){
+        this.subTotal = 0;
+      }else{
+        this.subTotal = (25-this.total);
+      }
+      let sectionFourObj = {
+        total:this.total,
+        subTotal:this.subTotal,
+        checksfourPointone:this.checksfourPointone,
+        checksfourPointtwo:this.checksfourPointtwo,
+        checksfourPointthree:this.checksfourPointthree,
+        checksfourPointfour:this.checksfourPointfour,
+        checksfourPointfive:this.checksfourPointfive,
+        checksfourPointsix:this.checksfourPointsix,
+        checksfourPointseven:this.checksfourPointseven,
+        checksfourPointeight:this.checksfourPointeight,
+        comment41:this.comment41,
+        comment42:this.comment42,
+        comment43:this.comment43,
+        comment44:this.comment44,
+        comment45:this.comment45,
+        comment46:this.comment46,
+      }
+      this.$emit('sectionFourValue',sectionFourObj);
     }
   },
   data() {
     return {
       total:0,
-      subtotal:25,
+      subTotal:25,
 
       checksfourPointone:0,
       condition411:0,

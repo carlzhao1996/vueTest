@@ -6,7 +6,7 @@
           <h3>5 BOX LEVEL QUALITY POTENTIAL RISK</h3>
         </el-col>
         <el-col :span="8" class="subTotal">
-          <h3>SUB TOTAL= {{40}}</h3>
+          <h3>SUB TOTAL= {{subTotal}}</h3>
         </el-col>
       </el-row>
     </div>
@@ -31,7 +31,7 @@
               <p>{{item.calOneText}}</p>
               <el-input-number
                 size="small"
-                @change="calculateData"
+                @change="calculate"
                 v-model="$data[item.x1]"
                 :min="0"
               ></el-input-number>
@@ -42,7 +42,7 @@
               <p>{{item.calTwoText}}</p>
               <el-input-number
                 size="small"
-                @change="calculateData"
+                @change="calculate"
                 v-model="$data[item.x2]"
                 :min="0"
               ></el-input-number>
@@ -53,7 +53,7 @@
               <p>{{item.calThreeText}}</p>
               <el-input-number
                 size="small"
-                @change="calculateData"
+                @change="calculate"
                 v-model="$data[item.x3]"
                 :min="0"
               ></el-input-number>
@@ -62,18 +62,84 @@
         </el-row>
         <el-row>
           <el-col :span="20" style="padding-top:20px;">
-            <el-input type="textarea" autosize placeholder="Remark" v-model="$data[item.comment]"></el-input>
+            <el-input type="textarea" autosize placeholder="Remark" v-model="$data[item.comment]" @input="calculate"></el-input>
           </el-col>
         </el-row>
       </div>
+    </div>
+    <div style="padding-top:30px;">
+      <span>SUB TOTAL: {{total}}</span>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  methods:{
+    calculate(){
+      this.checksfivePointone = this.condition511*1+this.condition512*2+this.condition513*3;
+      this.checksfivePointtwo = this.condition521*1+this.condition522*2+this.condition523*3;
+      this.checksfivePointthree = this.condition531*1+this.condition532*2+this.condition533*3;
+      this.checksfivePointfour = this.condition541*1+this.condition542*2+this.condition543*3;
+      this.checksfivePointfive = this.condition551*1+this.condition552*2+this.condition553*3;
+      this.checksfivePointsix = this.condition561*1+this.condition562*2+this.condition563*3;
+      this.checksfivePointseven = this.condition571*1+this.condition572*2+this.condition573*3;
+      this.checksfivePointeight = this.condition581*1+this.condition582*2+this.condition583*3;
+      this.checksfivePointnine = this.condition591*1+this.condition592*2+this.condition593*3;
+      this.checksfivePointten = this.condition5101*1+this.condition5102*2+this.condition5103*3;
+      this.checksfivePointeleven = this.condition5111*1+this.condition5112*2+this.condition5113*3;
+      this.checksfivePointtwelve = this.condition5121*1+this.condition5122*2+this.condition5123*3;
+      this.checksfivePointthirteen = this.condition5131*1+this.condition5132*2+this.condition5133*3;
+      this.checksfivePointfourteen = this.condition5141*1+this.condition5142*2+this.condition5143*3;
+      this.total = this.checksfivePointone+this.checksfivePointtwo+this.checksfivePointthree
+      +this.checksfivePointfour+this.checksfivePointfive+this.checksfivePointsix+this.checksfivePointseven
+      +this.checksfivePointeight+this.checksfivePointnine+this.checksfivePointten+this.checksfivePointten
+      +this.checksfivePointeleven+this.checksfivePointtwelve+this.checksfivePointthirteen+this.checksfivePointfourteen;
+      if((25-this.total)<0){
+        this.subTotal = 0;
+      }else{
+        this.subTotal = (25-this.total);
+      }
+      let sectionFiveObj={
+        total:this.total,
+        subTotal:this.subTotal,
+        checksfivePointone:this.checksfivePointone,
+        checksfivePointtwo:this.checksfivePointtwo,
+        checksfivePointthree:this.checksfivePointthree,
+        checksfivePointfour:this.checksfivePointfour,
+        checksfivePointfive:this.checksfivePointfive,
+        checksfivePointsix:this.checksfivePointsix,
+        checksfivePointseven:this.checksfivePointseven,
+        checksfivePointeight:this.checksfivePointeight,
+        checksfivePointnine:this.checksfivePointnine,
+        checksfivePointten:this.checksfivePointten,
+        checksfivePointeleven:this.checksfivePointeleven,
+        checksfivePointtwelve:this.checksfivePointtwelve,
+        checksfivePointthirteen:this.checksfivePointthirteen,
+        checksfivePointfourteen:this.checksfivePointfourteen,
+        comment51:this.comment51,
+        comment52:this.comment52,
+        comment53:this.comment53,
+        comment54:this.comment54,
+        comment55:this.comment55,
+        comment56:this.comment56,
+        comment57:this.comment57,
+        comment58:this.comment58,
+        comment59:this.comment59,
+        comment510:this.comment510,
+        comment511:this.comment511,
+        comment512:this.comment512,
+        comment513:this.comment513,
+        comment514:this.comment514
+      }
+      this.$emit('sectionFiveValue',sectionFiveObj);
+    }
+  },
   data() {
     return {
+      total:0,
+      subTotal:25,
+
       checksfivePointone:0,
       condition511:0,
       condition512:0,
