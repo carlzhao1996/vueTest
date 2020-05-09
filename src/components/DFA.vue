@@ -74,7 +74,6 @@ export default {
       gaDate: "",
       performed_By: "",
       process_owner: "",
-      packSizeCheck: 0
     };
   }
 };
