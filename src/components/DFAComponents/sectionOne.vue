@@ -178,10 +178,13 @@ export default {
       this.total = this.judge11+this.judge12+this.judge13+this.judge14+this.judge15
       +this.judge16+this.judge17+this.judge18+this.judge19+this.judge110+this.judge111;
       if((66-this.total)<0){
-        this.subTotal = 0
+        this.subTotal = 0;
+      }else if(66-(this.total*6)<0){
+        this.subTotal = 0;
       }else{
         this.subTotal = 66-(this.total*6);
       }
+      this.$emit('sectionOneValue',this.subTotal);
     }
   }
 };

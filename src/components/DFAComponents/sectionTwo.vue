@@ -223,6 +223,7 @@ export default {
       }else{
         this.subTotal = 16-this.total;
       }
+      this.$emit('sectionTwoValue',this.subTotal);
     }
   }
 };

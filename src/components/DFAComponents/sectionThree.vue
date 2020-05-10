@@ -166,9 +166,12 @@ export default {
       +this.judge36+this.judge37+this.judge38+this.judge39;
       if((18-this.total)<0){
         this.subTotal = 0;
+      }else if((18-this.total*2)<0){
+        this.subTotal = 0;
       }else{
-        this.subTotal = 18-this.total*2;
+        this.subTotal = 18-this.total*2
       }
+      this.$emit('sectionThreeValue',this.subTotal);
     }
   }
 };
