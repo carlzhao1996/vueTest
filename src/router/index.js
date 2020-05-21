@@ -5,6 +5,7 @@ import AIOManufactury from '@/components/AIOManufactury'
 import DFA from '@/components/DFA'
 import MFGAssembly from '@/components/MFGAssembly'
 import MFGPacking from '@/components/MFGpMenu'
+import uploadTest from '@/components/uploadTest'
 import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(Router)
@@ -35,6 +36,11 @@ export default new Router({
       path:"/MFGPacking",
       name:"MFGPacking",
       component:MFGPacking
+    },
+    {
+      path:"/upload",
+      name:"uploadTest",
+      component:uploadTest
     }
   ]
 })
